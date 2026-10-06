@@ -1,0 +1,6 @@
+[
+  {"id": "LOAN_001", "asset_type": "Corporate Loan", "counterparty": "TechCorp Inc", "notional": 5000000, "interest_rate": 0.055, "rating": "BBB"},
+  {"id": "BOND_002", "asset_type": "Corporate Bond", "counterparty": "EnergyGlobal", "notional": 3000000, "coupon": 0.045, "rating": "A"},
+  {"id": "DERIV_003", "asset_type": "Interest Rate Swap", "counterparty": "FinBank", "notional": 10000000, "fixed_rate": 0.038, "rating": "AA"},
+  {"id": "LOAN_004", "asset_type": "Commercial Real Estate", "counterparty": "BuildCo", "notional": 7000000, "interest_rate": 0.062, "rating": "BB"}
+]
