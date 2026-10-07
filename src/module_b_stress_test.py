@@ -1,4 +1,5 @@
 import json
+import pandas as pd
 
 def run_stress_test(portfolio_path: str, event_type: str, impact_score: float):
     with open(portfolio_path, 'r') as f:
@@ -53,3 +54,12 @@ def run_stress_test(portfolio_path: str, event_type: str, impact_score: float):
         "pnl_pct": round(((total_post_val - total_pre_val) / total_pre_val) * 100, 2),
         "asset_details": results
     }
+
+def format_stress_results(asset_details: list) -> pd.DataFrame:
+    """Formats numeric asset values into clean USD currency display."""
+    df = pd.DataFrame(asset_details)
+    formatted = df.copy()
+    formatted['Pre-Stress Value'] = formatted['Pre_Value'].apply(lambda x: f"${x:,.2f}")
+    formatted['Post-Stress Value'] = formatted['Post_Value'].apply(lambda x: f"${x:,.2f}")
+    formatted['PnL Impact'] = formatted['PnL'].apply(lambda x: f"${x:,.2f}" if x >= 0 else f"-${abs(x):,.2f}")
+    return formatted[['Asset_ID', 'Type', 'Pre-Stress Value', 'Post-Stress Value', 'PnL Impact']]
